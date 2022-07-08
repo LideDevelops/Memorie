@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 
 interface MemorieCardProps {
     id: string;
+    text: string;
 }
 
 interface MemorieCardState {
@@ -16,7 +17,7 @@ class MemorieCard extends React.Component<MemorieCardProps, MemorieCardState> {
         return (
             <>
                 <div className='memorie-card' data-testid={`memorie-card-${this.props.id}`}>
-                    
+                    <p>{this.props.text}</p>
                 </div>
             </>
           );        
