@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 const MemorieCard: FC = () => {
   return (
     <>
-        <div class="memorie-card" data-testid="memorie-card">
+        <div className='memorie-card' data-testid="memorie-card">
             
         </div>
     </>
