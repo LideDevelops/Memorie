@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import React from 'react';
+import './memorie-card.css'
 
 interface MemorieCardProps {
     id: string;
@@ -13,13 +14,20 @@ interface MemorieCardState {
 class MemorieCard extends React.Component<MemorieCardProps, MemorieCardState> {
     constructor(props: MemorieCardProps) {
         super(props);
+        this.state = {
+            flipped: false
+        };
+    }
+
+    handleClick = () => {
+        this.setState({flipped: !this.state.flipped})
     }
 
     render(): React.ReactNode {
         return (
             <>
-                <div className='memorie-card' data-testid={`memorie-card-${this.props.id}`}>
-                    <p>{this.props.text}</p>
+                <div onClick={this.handleClick} className='memorie-card' data-testid={`memorie-card-${this.props.id}`}>
+                    <p>{this.state.flipped ? this.props.text : 'Cover'}</p>
                 </div>
             </>
           );        
