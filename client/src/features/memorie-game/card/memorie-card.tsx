@@ -11,7 +11,9 @@ interface MemorieCardState {
 
 
 class MemorieCard extends React.Component<MemorieCardProps, MemorieCardState> {
-
+    constructor(props: MemorieCardProps) {
+        super(props);
+    }
 
     render(): React.ReactNode {
         return (
