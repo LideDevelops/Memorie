@@ -1,38 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './memorie-card.css'
 
-interface MemorieCardProps {
+const styles = {
+    memorieCard: {
+        borderStyle: "solid",
+        boderWidth: "1px"
+    }
+  }
+
+type MemorieCardProps = {
     id: string;
     text: string;
-}
+};
 
-interface MemorieCardState {
+type MemorieCardState = {
     flipped: boolean; //if true, show image of card
 }
 
-
-class MemorieCard extends React.Component<MemorieCardProps, MemorieCardState> {
-    constructor(props: MemorieCardProps) {
-        super(props);
-        this.state = {
-            flipped: false
-        };
-    }
-
-    handleClick = () => {
-        this.setState({flipped: !this.state.flipped})
-    }
-
-    render(): React.ReactNode {
-        return (
-            <>
-                <div onClick={this.handleClick} className='memorie-card' data-testid={`memorie-card-${this.props.id}`}>
-                    <p>{this.state.flipped ? this.props.text : 'Cover'}</p>
-                </div>
-            </>
-          );        
-    }
+const MemorieCard = (props: MemorieCardProps) => {
+    const [flipped, setFlipped] = useState(false);
+    return (
+        <>
+            <div onClick={() => setFlipped(!flipped)} data-testid={`memorie-card-${props.id}`}>
+                <p>{flipped ? props.text : 'Cover'}</p>
+            </div>
+        </>
+    )
 
 }
+
+
 
 export default MemorieCard;
