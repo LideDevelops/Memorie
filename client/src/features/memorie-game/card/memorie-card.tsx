@@ -4,7 +4,6 @@ import {createUseStyles} from 'react-jss'
 const useStyles = createUseStyles({
     memorieCard: {
         borderStyle: "solid",
-        boderWidth: "1px"
     }
   });
 
