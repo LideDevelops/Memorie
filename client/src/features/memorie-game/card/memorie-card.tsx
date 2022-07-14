@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
-import './memorie-card.css'
+import {createUseStyles} from 'react-jss'
 
-const styles = {
+const useStyles = createUseStyles({
     memorieCard: {
         borderStyle: "solid",
         boderWidth: "1px"
     }
-  }
+  });
 
 type MemorieCardProps = {
     id: string;
     text: string;
 };
 
-type MemorieCardState = {
-    flipped: boolean; //if true, show image of card
-}
-
 const MemorieCard = (props: MemorieCardProps) => {
     const [flipped, setFlipped] = useState(false);
+    const classes = useStyles();
     return (
         <>
-            <div onClick={() => setFlipped(!flipped)} data-testid={`memorie-card-${props.id}`}>
+            <div onClick={() => setFlipped(!flipped)} className={classes.memorieCard} data-testid={`memorie-card-${props.id}`}>
                 <p>{flipped ? props.text : 'Cover'}</p>
             </div>
         </>
     )
-
 }
 
 
