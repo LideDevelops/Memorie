@@ -1,8 +1,8 @@
-import { MemorieCard } from "../models/memorie.dto";
+import { MemorieCardModel } from "../models/memorie.dto";
 import { getMemorieCards } from "./memorie-api";
 
 test('load memorie items', async () => {
-    const mockData: MemorieCard[] = [
+    const mockData: MemorieCardModel[] = [
         {
             id: 1,
             name: "MemCard1"

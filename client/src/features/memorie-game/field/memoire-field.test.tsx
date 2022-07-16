@@ -3,7 +3,7 @@ import { act } from 'react-dom/test-utils';
 import MemorieField from './memorie-field';
 
 test('Renders Memorie filed', () => {
-  render(<MemorieField cardAmound={2} id='test'/>);
+  render(<MemorieField id='test'/>);
   const divElement = screen.getByTestId('memorie-field-test');
   expect(divElement).toBeInTheDocument();
 });
