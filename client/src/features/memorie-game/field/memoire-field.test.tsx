@@ -1,9 +1,44 @@
-import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-import MemorieField from './memorie-field';
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
+import { useMemorieCards } from "../api/memorie-api";
+import { MemorieCardModel } from "../models/memorie.dto";
+import MemorieField from "./memorie-field";
 
-test('Renders Memorie filed', () => {
-  render(<MemorieField id='test'/>);
-  const divElement = screen.getByTestId('memorie-field-test');
-  expect(divElement).toBeInTheDocument();
+const fakeMemorieCards: MemorieCardModel[] = [
+  {
+    id: 1,
+    name: 'test'
+  }
+];
+
+jest.mock('../api/memorie-api', () => ({
+  useMemorieCards: () => fakeMemorieCards
+}));
+
+let container: Element | null = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  if(!container) {
+    return;
+  }
+  // cleanup on exiting
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
+
+
+it('Renders Memorie filed for one card with 2 fields', async () => {
+
+
+  await act(async () => { 
+    render(<MemorieField id='test' />, container)
+  });
+
+  expect(container?.firstChild?.childNodes.length).toBe(2);
 });

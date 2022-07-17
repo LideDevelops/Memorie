@@ -20,6 +20,6 @@ const mockData: MemorieCardModel[] = [
 ]
 
 
-export async function getMemorieCards(): Promise<MemorieCardModel[]> {
+export function useMemorieCards(): MemorieCardModel[] {    
     return mockData;
 }
