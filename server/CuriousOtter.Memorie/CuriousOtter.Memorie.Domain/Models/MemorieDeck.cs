@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CuriousOtter.Memorie.Domain.Models
 {
-    public abstract class BaseEntity<TIdentidfier> 
+    public class MemorieDeck : BaseEntity<int>
     {
-        public DateTime LastModified { get; set; }
+        ICollection<MemorieCard> CardsWithoutDoubles;
     }
 }
