@@ -9,9 +9,16 @@ namespace CuriousOtter.Memorie.Infrastructure.Logic.MemorieDeck
 {
     public class MemorieDeckRetriever : IMemorieDeckRetriever
     {
-        public Task<Domain.Models.MemorieDeck> GetMemorieDeckAsync(int id)
+        private readonly IMemorieDeckRetrieverRepository memorieDeckRetrieverRepository;
+
+        public MemorieDeckRetriever(IMemorieDeckRetrieverRepository memorieDeckRetrieverRepository)
         {
-            throw new NotImplementedException();
+            this.memorieDeckRetrieverRepository = memorieDeckRetrieverRepository;
+        }
+
+        public async Task<Domain.Models.MemorieDeck> GetMemorieDeckAsync(int id)
+        {
+            return await memorieDeckRetrieverRepository.GetMemorieDeckAsync(id);
         }
 
         public IQueryable<Domain.Models.MemorieDeck> GetMemorieDeckAsyncs()
