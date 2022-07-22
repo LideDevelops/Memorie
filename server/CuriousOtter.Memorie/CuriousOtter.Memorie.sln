@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.Infrastructure", "CuriousOtter.Memorie.Infrastructure\CuriousOtter.Memorie.Infrastructure.csproj", "{F6151115-3282-4810-8394-2FFFFABE51E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuriousOtter.Memorie.Infrastructure.UnitTest", "CuriousOtter.Memorie.Infrastructure.UnitTest\CuriousOtter.Memorie.Infrastructure.UnitTest.csproj", "{DD7834CD-CB84-4100-B126-679B817CE147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.Infrastructure.UnitTest", "CuriousOtter.Memorie.Infrastructure.UnitTest\CuriousOtter.Memorie.Infrastructure.UnitTest.csproj", "{DD7834CD-CB84-4100-B126-679B817CE147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuriousOtter.Memorie.InMemoryMemorieReporistory", "CuriousOtter.Memorie.InMemoryMemorieReporistory\CuriousOtter.Memorie.InMemoryMemorieReporistory.csproj", "{9AA59D17-026A-49ED-AF92-11C61BF09359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DD7834CD-CB84-4100-B126-679B817CE147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD7834CD-CB84-4100-B126-679B817CE147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD7834CD-CB84-4100-B126-679B817CE147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA59D17-026A-49ED-AF92-11C61BF09359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA59D17-026A-49ED-AF92-11C61BF09359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA59D17-026A-49ED-AF92-11C61BF09359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA59D17-026A-49ED-AF92-11C61BF09359}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
