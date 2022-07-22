@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CuriousOtter.Memorie.Domain\CuriousOtter.Memorie.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
