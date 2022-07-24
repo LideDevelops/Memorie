@@ -10,6 +10,6 @@ namespace CuriousOtter.Memorie.Infrastructure.Ports.Memorie
     public interface IMemorieDeckRetrieverRepository
     {
         Task<MemorieDeck> GetMemorieDeckAsync(int id);
-        IQueryable<MemorieDeck> GetMemorieDecksAsync();
+        IQueryable<MemorieDeck> GetMemorieDecks();
     }
 }

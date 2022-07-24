@@ -24,7 +24,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Repository.MemorieDeck
             return Task.FromResult(memorieDeckStorage.GetMemorieCards().Where(x => x.Identidfier == id).FirstOrDefault(new NotADeckMemorieDeck()));
         }
 
-        public IQueryable<Domain.Models.MemorieDeck> GetMemorieDecksAsync()
+        public IQueryable<Domain.Models.MemorieDeck> GetMemorieDecks()
         {
             return memorieDeckStorage.GetMemorieCards();
         }

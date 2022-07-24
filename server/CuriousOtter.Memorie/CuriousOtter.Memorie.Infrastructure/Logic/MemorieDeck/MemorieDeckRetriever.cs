@@ -23,7 +23,7 @@ namespace CuriousOtter.Memorie.Infrastructure.Logic.MemorieDeck
 
         public IQueryable<Domain.Models.MemorieDeck> GetMemorieDecks()
         {
-            throw new NotImplementedException();
+            return memorieDeckRetrieverRepository.GetMemorieDecks();
         }
     }
 }

@@ -39,5 +39,20 @@ namespace CuriousOtter.Memorie.Infrastructure.UnitTest.Logic
             var result = await testee.GetMemorieDeckAsync(1);
             Assert.IsNull(result);
         }
+
+        [Test]
+        public void GetMemorieDecks_test()
+        {
+            var decks = new List<MemorieDeck>()
+            {
+                new MemorieDeck(1),
+                new MemorieDeck(2)
+            }.AsQueryable();
+            memorieDeckRetrieverRepository.GetMemorieDecks().Returns(decks);
+
+            var result = testee.GetMemorieDecks();
+            Assert.IsNotNull(result);
+            Assert.IsNotEmpty(result);
+        }
     }
 }

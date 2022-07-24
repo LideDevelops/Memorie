@@ -86,7 +86,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.Repository
             }.AsQueryable();
             memorieDeckStorage.GetMemorieCards().Returns(memCards);
 
-            var result = testee.GetMemorieDecksAsync();
+            var result = testee.GetMemorieDecks();
             Assert.NotNull(result);
             Assert.IsNotEmpty(result);
         }
