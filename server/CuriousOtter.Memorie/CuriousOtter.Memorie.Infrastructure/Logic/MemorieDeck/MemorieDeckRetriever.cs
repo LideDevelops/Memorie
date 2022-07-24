@@ -21,7 +21,7 @@ namespace CuriousOtter.Memorie.Infrastructure.Logic.MemorieDeck
             return await memorieDeckRetrieverRepository.GetMemorieDeckAsync(id);
         }
 
-        public IQueryable<Domain.Models.MemorieDeck> GetMemorieDeckAsyncs()
+        public IQueryable<Domain.Models.MemorieDeck> GetMemorieDecks()
         {
             throw new NotImplementedException();
         }

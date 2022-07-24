@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.Infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.InMemoryMemorieReporistory", "CuriousOtter.Memorie.InMemoryMemorieReporistory\CuriousOtter.Memorie.InMemoryMemorieReporistory.csproj", "{9AA59D17-026A-49ED-AF92-11C61BF09359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuriousOtter.Memorie.InMemoryMemorieReporistory.Test", "CuriousOtter.Memorie.InMemoryMemorieReporistory.Test\CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.csproj", "{353F6556-24E1-4AF2-8D48-B964B15A3A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CuriousOtter.Memorie.InMemoryMemorieReporistory.Test", "CuriousOtter.Memorie.InMemoryMemorieReporistory.Test\CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.csproj", "{353F6556-24E1-4AF2-8D48-B964B15A3A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CuriousOtter.Memorie.GameAPI.Tests", "CuriousOtter.Memorie.GameAPI.Tests\CuriousOtter.Memorie.GameAPI.Tests.csproj", "{5A5AA789-8F26-423E-A2D6-5FFFAF8AC2E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{353F6556-24E1-4AF2-8D48-B964B15A3A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353F6556-24E1-4AF2-8D48-B964B15A3A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{353F6556-24E1-4AF2-8D48-B964B15A3A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5AA789-8F26-423E-A2D6-5FFFAF8AC2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5AA789-8F26-423E-A2D6-5FFFAF8AC2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5AA789-8F26-423E-A2D6-5FFFAF8AC2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5AA789-8F26-423E-A2D6-5FFFAF8AC2E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

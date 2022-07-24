@@ -1,3 +1,4 @@
+using CuriousOtter.Memorie.Infrastructure.Setup;
 using CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureProject();
 builder.Services.AddInMemoryMemorieRepositroy();
 
 var app = builder.Build();
