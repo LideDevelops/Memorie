@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Storage
 {
-    public class MemorieDeckStorage
+    public class MemorieDeckStorage : IMemorieDeckStorage
     {
         private ICollection<MemorieDeck> memorieDecks;
 
