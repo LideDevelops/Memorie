@@ -34,12 +34,12 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                             new MemorieCard(2)
                             {
                                 LastModified = DateTime.Now,
-                                Name = "Test Card 1"
+                                Name = "Test Card 2"
                             },
                             new MemorieCard(3)
                             {
                                 LastModified = DateTime.Now,
-                                Name = "Test Card 1"
+                                Name = "Test Card 3"
                             },
                         }
                     }
