@@ -1,4 +1,5 @@
 export interface MemorieCardModel {
-    id: number;
+    lastModified: Date;
+    identidfier: number;
     name: string;
 }

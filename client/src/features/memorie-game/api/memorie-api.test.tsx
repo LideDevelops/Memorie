@@ -30,20 +30,24 @@ describe("useMyName tests", () => {
     it("loads the mock data", () => {
     const mockData: MemorieCardModel[] = [
         {
-            id: 1,
-            name: "MemCard1"
+            identidfier: 1,
+            name: "MemCard1",
+            lastModified: new Date()
         },
         {
-            id: 2,
-            name: "MemCard2"
+            identidfier: 2,
+            name: "MemCard2",
+            lastModified: new Date()
         },
         {
-            id: 3,
-            name: "MemCard3"
-        },
+            identidfier: 3,
+            name: "MemCard3",
+            lastModified: new Date()
+        },  
         {
-            id: 4,
-            name: "MemCard4"
+            identidfier: 4,
+            name: "MemCard4",
+            lastModified: new Date()
         },
     ]
 

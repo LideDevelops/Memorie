@@ -4,10 +4,12 @@ import { useMemorieCards } from "../api/memorie-api";
 import { MemorieCardModel } from "../models/memorie.dto";
 import MemorieField from "./memorie-field";
 
+
 const fakeMemorieCards: MemorieCardModel[] = [
   {
-    id: 1,
-    name: 'test'
+    identidfier: 1,
+    name: 'test',
+    lastModified: new Date()
   }
 ];
 
