@@ -42,7 +42,51 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                                 Name = "Test Card 3"
                             },
                         }
-                    }
+                    },
+                    new MemorieDeck(2)
+                    {
+                        LastModified = DateTime.Now,
+                        CardsWithoutDoubles = new MemorieCard[]
+                        {
+                            new MemorieCard(1)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Otter Card 1"
+                            },
+                            new MemorieCard(2)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Otter Card 2"
+                            },
+                            new MemorieCard(3)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Otter Card 3"
+                            },
+                        }
+                    },
+                    new MemorieDeck(3)
+                    {
+                        LastModified = DateTime.Now,
+                        CardsWithoutDoubles = new MemorieCard[]
+                        {
+                            new MemorieCard(1)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Owl Card 1"
+                            },
+                            new MemorieCard(2)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Owl Card 2"
+                            },
+                            new MemorieCard(3)
+                            {
+                                LastModified = DateTime.Now,
+                                Name = "Owl Card 3"
+                            },
+                        }
+                    },
                 };
                 return new MemorieDeckStorage(initialMemorieDeckList);
             });

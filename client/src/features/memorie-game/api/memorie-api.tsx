@@ -2,7 +2,7 @@ import { MemorieCardModel } from "../models/memorie.dto"
 import { useState, useEffect } from 'react';
 import MemorieCard from "../card/memorie-card";
 
-export function useMemorieCards(): MemorieCardModel[] | null {    
+export function useMemorieCards(cardId: number): MemorieCardModel[] | null {    
     const [memorieCards, setNewDeckOfCards] = useState<MemorieCardModel[] | null>(null);
 
 
@@ -11,7 +11,7 @@ export function useMemorieCards(): MemorieCardModel[] | null {
           setNewDeckOfCards(cards);
         }
         const fetchApi = () => {
-            fetch("https://localhost:7008/MemorieDecks/1")
+            fetch(`https://localhost:7008/MemorieDecks/${cardId}`)
                 .then(response => { 
                     return response.json();
                 })
@@ -21,7 +21,7 @@ export function useMemorieCards(): MemorieCardModel[] | null {
                 })
         }
         fetchApi();
-    },[]);
+    },[cardId]);
     
     return memorieCards;
 }

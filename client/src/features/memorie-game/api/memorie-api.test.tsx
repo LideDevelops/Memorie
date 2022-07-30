@@ -51,7 +51,7 @@ describe("useMyName tests", () => {
         },
     ]
 
-      const { result } = renderHook(() => useMemorieCards());
+      const { result } = renderHook(() => useMemorieCards(1));
       expect(result.current).toStrictEqual(mockData);
     });
 });

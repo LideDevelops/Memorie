@@ -9,7 +9,12 @@ type MemorieFieldProps = {
 const amountOfSameCardsOnTable = 2;
 
 const MemorieField = (props: MemorieFieldProps) => {
-    const loadedCards = useMemorieCards();
+    const [memorieId, setMemorieId] = useState<number>(1);
+    const loadedCards = useMemorieCards(memorieId);
+
+    const handleCardSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setMemorieId(Number.parseInt(e.target.value));
+    }
     if(loadedCards == null) {
         return (
             <div>
@@ -22,6 +27,14 @@ const MemorieField = (props: MemorieFieldProps) => {
         .map((card, index) => <MemorieCard key={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} id={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} text={card.name}></MemorieCard>)
         return (
         <div id={`memorie-field-${props.id}`} data-testid={`memorie-field-${props.id}`}>
+                  <select 
+        value={memorieId} 
+        onChange={handleCardSelectionChange} 
+      >
+        <option value="1">Card Set 1</option>
+        <option value="2">Card Set 2</option>
+        <option value="3">Card Set 3</option>
+      </select>
             {cardList}
         </div>
     )
