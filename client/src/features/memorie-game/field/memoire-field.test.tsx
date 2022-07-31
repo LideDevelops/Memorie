@@ -35,12 +35,12 @@ afterEach(() => {
 });
 
 
-it('Renders Memorie filed for one card with 2 fields and a dropdown', async () => {
+it('Renders Memorie filed for one card with 2 fields', async () => {
 
 
   await act(async () => { 
     render(<MemorieField id='test' />, container)
   });
 
-  expect(container?.firstChild?.childNodes.length).toBe(3);
+  expect(container?.firstChild?.childNodes.length).toBe(2);
 });

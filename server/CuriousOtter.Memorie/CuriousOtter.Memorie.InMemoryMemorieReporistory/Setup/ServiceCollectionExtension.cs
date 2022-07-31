@@ -46,24 +46,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                     new MemorieDeck(2)
                     {
                         LastModified = DateTime.Now,
-                        CardsWithoutDoubles = new MemorieCard[]
-                        {
-                            new MemorieCard(1)
-                            {
-                                LastModified = DateTime.Now,
-                                Name = "Otter Card 1"
-                            },
-                            new MemorieCard(2)
-                            {
-                                LastModified = DateTime.Now,
-                                Name = "Otter Card 2"
-                            },
-                            new MemorieCard(3)
-                            {
-                                LastModified = DateTime.Now,
-                                Name = "Otter Card 3"
-                            },
-                        }
+                        CardsWithoutDoubles = GetMockedCards("Otter", 50)
                     },
                     new MemorieDeck(3)
                     {
@@ -92,6 +75,12 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
             });
             services.AddTransient<IMemorieDeckRetrieverRepository, MemorieDeckRepository>();
             return services;
+        }
+
+        private static ICollection<MemorieCard> GetMockedCards(string namePattern, int amount)
+        {
+            var cards = Enumerable.Range(0,amount).Select(i => new MemorieCard(i) { Name = namePattern + $" {i}"});
+            return cards.ToList();
         }
     }
 }
