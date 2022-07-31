@@ -9,7 +9,7 @@ const fakeMemorieCards: MemorieCardModel[] = [
   {
     identidfier: 1,
     name: 'test',
-    lastModified: new Date()
+    lastModified: "2022-07-31T09:58:28.514Z"
   }
 ];
 
@@ -35,12 +35,12 @@ afterEach(() => {
 });
 
 
-it('Renders Memorie filed for one card with 2 fields', async () => {
+it('Renders Memorie filed for one card with 2 fields and a dropdown', async () => {
 
 
   await act(async () => { 
     render(<MemorieField id='test' />, container)
   });
 
-  expect(container?.firstChild?.childNodes.length).toBe(2);
+  expect(container?.firstChild?.childNodes.length).toBe(3);
 });

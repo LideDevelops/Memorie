@@ -1,57 +1,46 @@
-import { render, renderHook } from "@testing-library/react";
+import { act, renderHook } from '@testing-library/react-hooks'
+import { MemorieDeckModel } from '../models/memorie-deck.dto';
 import { MemorieCardModel } from "../models/memorie.dto";
 import { useMemorieCards } from "./memorie-api";
 
-// test('load memorie items', async () => {
-//     const mockData: MemorieCardModel[] = [
-//         {
-//             id: 1,
-//             name: "MemCard1"
-//         },
-//         {
-//             id: 2,
-//             name: "MemCard2"
-//         },
-//         {
-//             id: 3,
-//             name: "MemCard3"
-//         },
-//         {
-//             id: 4,
-//             name: "MemCard4"
-//         },
-//     ]
-//     const memorieApiData = setup();
-//     act(() => memorieApiData.)
-//     expect(memorieApiData).toStrictEqual(mockData);
-// });
+beforeEach(() => {
+    fetch.resetMocks();
+  });
 
 describe("useMyName tests", () => {
-    it("loads the mock data", () => {
-    const mockData: MemorieCardModel[] = [
-        {
+    it("loads the mock data", async () => {
+        const mockData: MemorieCardModel[] = [
+            {
+                identidfier: 1,
+                name: "MemCard1",
+                lastModified: "2022-07-31T09:58:28.514Z"
+            },
+            {
+                identidfier: 2,
+                name: "MemCard2",
+                lastModified: "2022-07-31T09:58:28.514Z"
+            },
+            {
+                identidfier: 3,
+                name: "MemCard3",
+                lastModified: "2022-07-31T09:58:28.514Z"
+            },  
+            {
+                identidfier: 4,
+                name: "MemCard4",
+                lastModified: "2022-07-31T09:58:28.514Z"
+            },
+        ]
+        const mockResponse: MemorieDeckModel = {
             identidfier: 1,
-            name: "MemCard1",
-            lastModified: new Date()
-        },
-        {
-            identidfier: 2,
-            name: "MemCard2",
-            lastModified: new Date()
-        },
-        {
-            identidfier: 3,
-            name: "MemCard3",
-            lastModified: new Date()
-        },  
-        {
-            identidfier: 4,
-            name: "MemCard4",
-            lastModified: new Date()
-        },
-    ]
+            lastModified: "2022-07-31T09:58:28.514Z",
+            cardsWithoutDoubles: mockData
+            
+        }
+        fetch.mockResponse(JSON.stringify(mockResponse));
+        const { result, waitForNextUpdate  } = renderHook(() => useMemorieCards(1));
 
-      const { result } = renderHook(() => useMemorieCards(1));
-      expect(result.current).toStrictEqual(mockData);
+        await waitForNextUpdate(); 
+        expect(result.current).toStrictEqual(mockData);
     });
 });

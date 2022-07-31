@@ -2,6 +2,6 @@ import { MemorieCardModel } from "./memorie.dto";
 
 export interface MemorieDeckModel {
     cardsWithoutDoubles: MemorieCardModel[];
-    lastModified: Date;
+    lastModified: string;
     identidfier: number;
 }
