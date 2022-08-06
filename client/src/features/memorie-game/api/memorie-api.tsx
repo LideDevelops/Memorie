@@ -9,7 +9,7 @@ export function useMemorieCards(cardId: number): MemorieCardModel[] | null {
 
     useEffect(() => {
         const fetchApi = () => {
-            fetch(`https://localhost:7008/MemorieDecks/${cardId}`)
+            fetch(`https://localhost:44302/MemorieDecks/${cardId}`)
                 .then(response => { 
                     return response.json();
                 })

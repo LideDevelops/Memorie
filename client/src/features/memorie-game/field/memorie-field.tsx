@@ -38,8 +38,10 @@ const MemorieField = (props: MemorieFieldProps) => {
         )
     }
     const cardList = loadedCards
-        .flatMap<MemorieCardModel>(card => Array.from<MemorieCardModel>({length: amountOfSameCardsOnTable}).fill(card))
-        .map((card, index) => <MemorieCard key={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} id={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} text={card.name}></MemorieCard>)
+        .map<MemorieCardModel[]>(card => Array.from<MemorieCardModel>({length: amountOfSameCardsOnTable}).fill(card))
+        .flatMap((sameCards) => {
+            return sameCards.map((card, index) => <MemorieCard key={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} id={card.identidfier.toString()} text={card.name}></MemorieCard>);
+        })
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {createUseStyles} from 'react-jss'
+import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../state-management/hooks';
+import { flipCard } from '../slices/memorie-card-slice';
 
 const useStyles = createUseStyles({
     memorieCard: {
@@ -16,10 +19,17 @@ type MemorieCardProps = {
 
 const MemorieCard = (props: MemorieCardProps) => {
     const [flipped, setFlipped] = useState(false);
+    const dispatch = useDispatch()
     const classes = useStyles();
+    const handleFlip = ()  => {
+        setFlipped(!flipped);
+        if(!flipped) {
+            dispatch(flipCard(props.id))
+        }                
+    }
     return (
         <>
-            <div onClick={() => setFlipped(!flipped)} className={classes.memorieCard} data-testid={`memorie-card-${props.id}`}>
+            <div onClick={() => handleFlip()} className={classes.memorieCard} data-testid={`memorie-card-${props.id}`}>
                 <p>{flipped ? props.text : 'Cover'}</p>
             </div>
         </>
