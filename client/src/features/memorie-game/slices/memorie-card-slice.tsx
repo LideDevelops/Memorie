@@ -19,7 +19,7 @@ export const memorieCardsSlice = createSlice({
         state.flippedCardIds = [];
     }
   }
-})
+});
 
 // Action creators are generated for each case reducer function
 export const { flipCard, startNextRound } = memorieCardsSlice.actions
