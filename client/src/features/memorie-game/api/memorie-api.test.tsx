@@ -7,7 +7,7 @@ beforeEach(() => {
     fetch.resetMocks();
   });
 
-describe("useMyName tests", () => {
+describe("useMemorieCards tests", () => {
     it("loads the mock data", async () => {
         const mockData: MemorieCardModel[] = [
             {

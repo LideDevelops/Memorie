@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react';
 import MemorieCard from './memorie-card';
 import { act } from 'react-dom/test-utils';
 
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn()
+}));
+
 test('Renders Memorie card unflipped', () => {
   render(<MemorieCard id='1' text='1'/>);
   const divElement = screen.getByTestId('memorie-card-1');

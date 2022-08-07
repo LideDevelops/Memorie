@@ -3,7 +3,9 @@ import { act } from "react-dom/test-utils";
 import { useMemorieCards } from "../api/memorie-api";
 import { MemorieCardModel } from "../models/memorie.dto";
 import MemorieField from "./memorie-field";
-
+jest.mock('react-redux', () => ({
+  useDispatch: () => jest.fn()
+}));
 
 const fakeMemorieCards: MemorieCardModel[] = [
   {
