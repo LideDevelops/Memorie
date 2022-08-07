@@ -1,11 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+const maxCardsToFlip = 2;
+
 interface MemorieCardsState {
     flippedCardIds: string[];
+    cardsLeftToFlip: number;
 }
 
 const initialState: MemorieCardsState = {
-    flippedCardIds: []
+    flippedCardIds: [],
+    cardsLeftToFlip: maxCardsToFlip
 }
 
 export const memorieCardsSlice = createSlice({
@@ -14,9 +18,11 @@ export const memorieCardsSlice = createSlice({
   reducers: {
     flipCard: (state, action: PayloadAction<string>) => {
         state.flippedCardIds.push(action.payload);
+        state.cardsLeftToFlip--;
     },
     startNextRound: (state) => {
         state.flippedCardIds = [];
+        state.cardsLeftToFlip = maxCardsToFlip;
     }
   }
 });

@@ -19,9 +19,13 @@ type MemorieCardProps = {
 
 const MemorieCard = (props: MemorieCardProps) => {
     const [flipped, setFlipped] = useState(false);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const canCardBeFlipped = useAppSelector(state => state.memorieCards.cardsLeftToFlip > 0)
     const classes = useStyles();
     const handleFlip = ()  => {
+        if(canCardBeFlipped === false) {
+            return;
+        }
         setFlipped(!flipped);
         if(!flipped) {
             dispatch(flipCard(props.id))
