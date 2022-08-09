@@ -19,6 +19,11 @@ jest.mock('../api/memorie-api', () => ({
   useMemorieCards: () => fakeMemorieCards
 }));
 
+jest.mock('../../state-management/hooks', () => ({
+  useAppDispatch: () => jest.fn(),
+  useAppSelector: (state) => jest.fn()
+}));
+
 let container: Element | null = null;
 beforeEach(() => {
   // setup a DOM element as a render target

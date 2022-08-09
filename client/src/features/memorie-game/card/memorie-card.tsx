@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {createUseStyles} from 'react-jss'
-import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector } from '../../state-management/hooks';
 import { flipCard } from '../slices/memorie-card-slice';
 
@@ -19,7 +18,7 @@ type MemorieCardProps = {
 
 const MemorieCard = (props: MemorieCardProps) => {
     const [flipped, setFlipped] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const canCardBeFlipped = useAppSelector(state => state.memorieCards.cardsLeftToFlip > 0)
     const classes = useStyles();
     const handleFlip = ()  => {

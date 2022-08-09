@@ -3,8 +3,9 @@ import { render, screen } from '@testing-library/react';
 import MemorieCard from './memorie-card';
 import { act } from 'react-dom/test-utils';
 
-jest.mock('react-redux', () => ({
-  useDispatch: () => jest.fn()
+jest.mock('../../state-management/hooks', () => ({
+  useAppDispatch: () => jest.fn(),
+  useAppSelector: (state) => jest.fn()
 }));
 
 test('Renders Memorie card unflipped', () => {
