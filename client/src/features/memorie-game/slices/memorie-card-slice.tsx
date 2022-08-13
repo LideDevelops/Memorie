@@ -6,12 +6,14 @@ interface MemorieCardsState {
     flippedCardIds: string[];
     cardsLeftToFlip: number;
     roundCounter: number;
+    cardIdsInGame: string[];
 }
 
 const initialState: MemorieCardsState = {
     flippedCardIds: [],
     cardsLeftToFlip: maxCardsToFlip,
-    roundCounter: 0
+    roundCounter: 0,
+    cardIdsInGame: []
 }
 
 export const memorieCardsSlice = createSlice({
@@ -26,10 +28,19 @@ export const memorieCardsSlice = createSlice({
         state.flippedCardIds = [];
         state.cardsLeftToFlip = maxCardsToFlip;
         state.roundCounter++;
+    },
+    beginGameWithCards: (state, action: PayloadAction<string[]>) => {
+      state.roundCounter = 0;
+      state.flippedCardIds = [];
+      state.cardIdsInGame = action.payload;
+      state.cardsLeftToFlip = maxCardsToFlip;
+    },
+    removeIdFromGame: (state, action: PayloadAction<string>) => {
+      state.cardIdsInGame = state.cardIdsInGame.filter(x => x !== action.payload);
     }
   }
 });
 
 // Action creators are generated for each case reducer function
-export const { flipCard, startNextRound } = memorieCardsSlice.actions
+export const { flipCard, startNextRound, beginGameWithCards, removeIdFromGame } = memorieCardsSlice.actions
 export default memorieCardsSlice.reducer

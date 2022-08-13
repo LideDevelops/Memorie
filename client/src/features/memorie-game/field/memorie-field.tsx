@@ -5,7 +5,7 @@ import { RootState } from '../../state-management/store';
 import {useMemorieCards  } from '../api/memorie-api';
 import MemorieCard from '../card/memorie-card';
 import {  MemorieCardModel } from '../models/memorie.dto';
-import { startNextRound } from '../slices/memorie-card-slice';
+import { beginGameWithCards, removeIdFromGame, startNextRound } from '../slices/memorie-card-slice';
 
 const useStyles = createUseStyles({
     memoriefield: {
@@ -25,20 +25,26 @@ type MemorieFieldProps = {
 }
 const amountOfSameCardsOnTable = 2;
 
-
 const MemorieField = (props: MemorieFieldProps) => {
     const [memorieId, setMemorieId] = useState<number>(1);
     const [douplicatedAndRandomizedCardArray, setdouplicatedAndRandomizedCardArray] = useState<MemorieCardModel[] | null>(null);
     const loadedCards = useMemorieCards(memorieId);
     const classes = useStyles();
     const canCardBeFlipped = useAppSelector(state => state.memorieCards.cardsLeftToFlip > 0)
+    const idsInGame = useAppSelector(state => state.memorieCards.cardIdsInGame)
+    const flippedIds = useAppSelector(state => state.memorieCards.flippedCardIds)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if(!canCardBeFlipped) {
-            setTimeout(() => dispatch(startNextRound()), 1000);
+            setTimeout(() => {
+                if(flippedIds.every(x => x === flippedIds[0])) {
+                    dispatch(removeIdFromGame(flippedIds[0]));
+                }
+                dispatch(startNextRound());
+            }, 1000);
         }
-    })
+    },[canCardBeFlipped])
     useEffect(() => {
         if(loadedCards == null) {
             return;
@@ -48,7 +54,8 @@ const MemorieField = (props: MemorieFieldProps) => {
         .map(value => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value));
-    
+        const idList = loadedCards.map(card => card.identidfier.toString());
+        dispatch(beginGameWithCards(idList))
     }, [loadedCards]);
     const handleCardSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setMemorieId(Number.parseInt(e.target.value));
@@ -62,6 +69,7 @@ const MemorieField = (props: MemorieFieldProps) => {
         )
     }
     const cardList = douplicatedAndRandomizedCardArray
+        .filter(card => idsInGame.includes(card.identidfier.toString()))
         .map((card, index) => {
             return <MemorieCard key={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} id={card.identidfier.toString()} text={card.name}></MemorieCard>
         });
