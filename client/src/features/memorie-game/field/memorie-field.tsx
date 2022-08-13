@@ -79,6 +79,7 @@ const MemorieField = (props: MemorieFieldProps) => {
                 <option value="1">Card Set 1</option>
                 <option value="2">Card Set 2</option>
                 <option value="3">Card Set 3</option>
+                <option value="3">Card Set 4</option>
             </select>
             <div id={`memorie-field-${props.id}`} data-testid={`memorie-field-${props.id}`} className={classes.memoriefield}>
                 {cardList}
