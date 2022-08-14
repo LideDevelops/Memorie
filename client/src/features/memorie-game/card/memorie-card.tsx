@@ -4,10 +4,33 @@ import { useAppDispatch, useAppSelector } from '../../state-management/hooks';
 import { flipCard } from '../slices/memorie-card-slice';
 
 const useStyles = createUseStyles({
-    memorieCard: {
-        borderStyle: "solid",
+    scene: {
         width: "50px",
-        height: "100px"
+        height: "100px",
+        perspective: "600px",
+    },
+    card: {
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        transition: "transform 1s",
+        transformStyle: "preserve-3d",
+        border: "1px solid black"
+    },
+    cardFace: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+        backfaceVisibility: "hidden",
+    },
+    cardFaceCover: {
+
+    },
+    cardFaceBack: {
+        transform: "rotateY( 180deg )",
+    },
+    cardIsFlipped: {
+        transform: " rotateY(180deg)"
     }
   });
 
@@ -23,7 +46,7 @@ const MemorieCard = (props: MemorieCardProps) => {
     const roundCount = useAppSelector(state => state.memorieCards.roundCounter)
     const classes = useStyles();
     const handleFlip = ()  => {
-        if(canCardBeFlipped === false) {
+        if(canCardBeFlipped === false || flipped) {
             return;
         }
         setFlipped(!flipped);
@@ -36,8 +59,18 @@ const MemorieCard = (props: MemorieCardProps) => {
     },[roundCount]);
     return (
         <>
-            <div onClick={() => handleFlip()} className={classes.memorieCard} data-testid={`memorie-card-${props.id}`}>
-                <p>{flipped ? props.text : 'Cover'}</p>
+            <div className={classes.scene}>
+                <div onClick={() => handleFlip()} className={classes.card + (flipped ? ' ' + classes.cardIsFlipped : '')} data-testid={`memorie-card-${props.id}`}>
+                    <div className={classes.cardFace + ' ' + classes.cardFaceCover}>
+                        <p>Cover</p>
+                    </div>
+                    <div className={classes.cardFace + ' ' + classes.cardFaceBack}>
+                        <p>
+                            {props.text}
+                        </p>
+                    </div>
+                    {/* <p>{flipped ? props.text : 'Cover'}</p> */}
+                </div>
             </div>
         </>
     )

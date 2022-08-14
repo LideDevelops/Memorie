@@ -73,7 +73,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                     new MemorieDeck(4)
                     {
                         LastModified = DateTime.Now,
-                        CardsWithoutDoubles = GetMockedCards("Taro", 20)
+                        CardsWithoutDoubles = GetMockedCards("Tarot", 20)
                     },
 
                 };
