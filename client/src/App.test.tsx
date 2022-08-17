@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 
 
-jest.mock("./features/memorie-game/field/memorie-field")
+jest.mock("./features/memorie-game/user-interface")
 
 test('renders learn react link', () => {
   render(<App />);
