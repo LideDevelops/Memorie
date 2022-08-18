@@ -1,4 +1,5 @@
-﻿using CuriousOtter.Memorie.Domain.Models;
+﻿using CuriousOtter.Memorie.Domain.Dto;
+using CuriousOtter.Memorie.Domain.Models;
 using CuriousOtter.Memorie.GameAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
@@ -29,16 +30,35 @@ namespace CuriousOtter.Memorie.GameAPI.Tests.Controller
         {
             var decks = new List<MemorieDeck>()
             {
-                new MemorieDeck(1),
-                new MemorieDeck(2)
+                new MemorieDeck(1, "Test"),
+                new MemorieDeck(2, "Test")
             }.AsQueryable();
             memorieDeckRetriever.GetMemorieDecks().Returns(decks);
             var result = testee.Get();
             Assert.NotNull(result);
             Assert.IsInstanceOf<OkObjectResult>(result);
             var castedResult = result as OkObjectResult;
-            Assert.IsInstanceOf<IQueryable<MemorieDeck>>(castedResult.Value); 
+            Assert.IsInstanceOf<IQueryable<MemorieDeck>>(castedResult.Value);
             var castedResultList = castedResult.Value as IQueryable<MemorieDeck>;
+            Assert.IsNotEmpty(castedResultList);
+            Assert.AreEqual(2, castedResultList.Count());
+        }
+
+        [Test]
+        public void GetAllDecksMetaData()
+        {
+            var decks = new List<MemorieDeck>()
+            {
+                new MemorieDeck(1, "Test"),
+                new MemorieDeck(2, "Test")
+            }.AsQueryable();
+            memorieDeckRetriever.GetMemorieDecks().Returns(decks);
+            var result = testee.GetMetaData();
+            Assert.NotNull(result);
+            Assert.IsInstanceOf<OkObjectResult>(result);
+            var castedResult = result as OkObjectResult;
+            Assert.IsInstanceOf<IQueryable<MemorieDeckMetaData>>(castedResult.Value);
+            var castedResultList = castedResult.Value as IQueryable<MemorieDeckMetaData>;
             Assert.IsNotEmpty(castedResultList);
             Assert.AreEqual(2, castedResultList.Count());
         }
@@ -46,7 +66,7 @@ namespace CuriousOtter.Memorie.GameAPI.Tests.Controller
         [Test]
         public async Task GetDeckAsync_FoundTest()
         {
-            var deck = new MemorieDeck(1);
+            var deck = new MemorieDeck(1, "test");
             memorieDeckRetriever.GetMemorieDeckAsync(Arg.Is<int>(1)).Returns(deck);
             var result = await testee.Get(1);
             Assert.NotNull(result);

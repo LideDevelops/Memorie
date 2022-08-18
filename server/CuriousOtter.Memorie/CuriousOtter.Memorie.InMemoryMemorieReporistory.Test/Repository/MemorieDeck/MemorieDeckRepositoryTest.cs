@@ -31,11 +31,11 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.Repository
         {
             var memCards = new List<MemorieDeck>()
             {
-                new MemorieDeck(1)
+                new MemorieDeck(1, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },
-                new MemorieDeck(2)
+                new MemorieDeck(2, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },
@@ -52,11 +52,11 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.Repository
         {
             var memCards = new List<MemorieDeck>()
             {
-                new MemorieDeck(3)
+                new MemorieDeck(3, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },
-                new MemorieDeck(2)
+                new MemorieDeck(2, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },
@@ -74,11 +74,11 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.Repository
         {
             var memCards = new List<MemorieDeck>()
             {
-                new MemorieDeck(1)
+                new MemorieDeck(1, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },
-                new MemorieDeck(2)
+                new MemorieDeck(2, "Test")
                 {
                     LastModified = DateTime.UtcNow,
                 },

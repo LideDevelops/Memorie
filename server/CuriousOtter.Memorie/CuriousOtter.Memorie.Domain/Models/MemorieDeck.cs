@@ -9,10 +9,11 @@ namespace CuriousOtter.Memorie.Domain.Models
     public class MemorieDeck : BaseEntity<int>
     {
         public virtual ICollection<MemorieCard> CardsWithoutDoubles { get; set; }
-
-        public MemorieDeck(int identidfier) : base(identidfier)
+        public virtual string Name { get; set; }
+        public MemorieDeck(int identidfier, string name) : base(identidfier)
         {
             CardsWithoutDoubles = new List<MemorieCard>();
+            this.Name = name;
         }
     }
 }

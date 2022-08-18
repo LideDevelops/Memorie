@@ -13,9 +13,18 @@ const useStyles = createUseStyles({
         width: "100%",
         height: "100%",
         position: "relative",
-        transition: "transform 1s",
+        transition: "transform 1s, box-shadow .3s",
         transformStyle: "preserve-3d",
-        border: "1px solid black"
+        border: "1px solid black",
+        borderRadius: "5px",
+        background: "linear-gradient(145deg, #f0f0f0, #cacaca)",
+        boxShadow:  "9px 9px 18px #969696,-9px -9px 18px #ffffff",
+        display: "flex",
+        justifyContent: 'center',
+        alignContent: 'center',
+        '&:hover': {
+            boxShadow:  "30px 30px 35px #969696,-30px -30px 35px #ffffff",
+        }
     },
     cardFace: {
         position: "absolute",

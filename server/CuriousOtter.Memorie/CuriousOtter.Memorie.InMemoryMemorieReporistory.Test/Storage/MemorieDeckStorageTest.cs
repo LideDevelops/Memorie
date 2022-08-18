@@ -16,7 +16,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Test.Storage
         MemorieDeckStorage testee;
         private ReadOnlyCollection<MemorieDeck> InitialDeckCollection = new List<MemorieDeck>
         {
-            new MemorieDeck(1)
+            new MemorieDeck(1, "Test")
             {
                 LastModified = DateTime.Now,
             }

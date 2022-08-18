@@ -15,13 +15,11 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
     {
         public static IServiceCollection AddInMemoryMemorieRepositroy(this IServiceCollection services)
         {
-
-
             services.AddSingleton<IMemorieDeckStorage, MemorieDeckStorage>(factory =>
             {
                 var initialMemorieDeckList = new List<MemorieDeck>()
                 {
-                    new MemorieDeck(1)
+                    new MemorieDeck(1, "Test")
                     {
                         LastModified = DateTime.Now,
                         CardsWithoutDoubles = new MemorieCard[]
@@ -43,12 +41,12 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                             },
                         }
                     },
-                    new MemorieDeck(2)
+                    new MemorieDeck(2, "Otter")
                     {
                         LastModified = DateTime.Now,
                         CardsWithoutDoubles = GetMockedCards("Otter", 50)
                     },
-                    new MemorieDeck(3)
+                    new MemorieDeck(3, "Owl")
                     {
                         LastModified = DateTime.Now,
                         CardsWithoutDoubles = new MemorieCard[]
@@ -70,7 +68,7 @@ namespace CuriousOtter.Memorie.InMemoryMemorieReporistory.Setup
                             },
                         }
                     },
-                    new MemorieDeck(4)
+                    new MemorieDeck(4, "Tarot")
                     {
                         LastModified = DateTime.Now,
                         CardsWithoutDoubles = GetMockedCards("Tarot", 20)

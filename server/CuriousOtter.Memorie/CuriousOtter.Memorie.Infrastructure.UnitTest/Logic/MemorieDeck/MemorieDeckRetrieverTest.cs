@@ -26,7 +26,7 @@ namespace CuriousOtter.Memorie.Infrastructure.UnitTest.Logic
         [Test]
         public async Task GetMemorieDeckAsync_Test_Success()
         {
-            var mockedDeck = new MemorieDeck(1);
+            var mockedDeck = new MemorieDeck(1, "Test");
             memorieDeckRetrieverRepository.GetMemorieDeckAsync(1).Returns(Task.FromResult(mockedDeck));
             var result = await testee.GetMemorieDeckAsync(1);
             Assert.IsNotNull(result);
@@ -45,8 +45,8 @@ namespace CuriousOtter.Memorie.Infrastructure.UnitTest.Logic
         {
             var decks = new List<MemorieDeck>()
             {
-                new MemorieDeck(1),
-                new MemorieDeck(2)
+                new MemorieDeck(1, "Test"),
+                new MemorieDeck(2, "Test")
             }.AsQueryable();
             memorieDeckRetrieverRepository.GetMemorieDecks().Returns(decks);
 

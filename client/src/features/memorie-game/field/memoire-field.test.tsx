@@ -1,6 +1,5 @@
-import { render, unmountComponentAtNode } from "react-dom";
-import { act } from "react-dom/test-utils";
-import { useMemorieCards } from "../api/memorie-api";
+import { render, screen, within } from '@testing-library/react';
+import React from 'react';
 import { MemorieCardModel } from "../models/memorie.dto";
 import MemorieField from "./memorie-field";
 jest.mock('react-redux', () => ({
@@ -15,39 +14,31 @@ const fakeMemorieCards: MemorieCardModel[] = [
   }
 ];
 
+jest.mock('../card/memorie-card', () => {
+  return {
+      default: () => {
+        return <div>card</div>
+      }
+  }
+});
+
+
 jest.mock('../api/memorie-api', () => ({
   useMemorieCards: () => fakeMemorieCards
 }));
 
-jest.mock('../../state-management/hooks', () => ({
+const reduxMock = jest.mock('../../state-management/hooks', () => ({
   useAppDispatch: () => jest.fn(),
-  useAppSelector: (state) => jest.fn()
+  useAppSelector: (state) => jest
+    .fn()
+
 }));
 
-let container: Element | null = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  if(!container) {
-    return;
-  }
-  // cleanup on exiting
-  unmountComponentAtNode(container);
-  container.remove();
-  container = null;
-});
-
-
-it('Renders Memorie filed for one card with 2 fields', async () => {
-
-
-  await act(async () => { 
-    render(<MemorieField id='test' />, container)
-  });
-
-  expect(container?.firstChild?.childNodes.length).toBe(2);
+test('Renders memorie field with 2 cards', async () => {
+  
+  render(<MemorieField id='1'/>);
+  const divElement = screen.getByTestId(`memorie-field-1`);
+  const cards = await within(divElement).findAllByText("card");
+  expect(divElement).toBeInTheDocument();
+  expect(cards.length).toBe(2)
 });

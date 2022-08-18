@@ -9,7 +9,7 @@ namespace CuriousOtter.Memorie.Domain.Models
 {
     public class NotADeckMemorieDeck : MemorieDeck
     {
-        public NotADeckMemorieDeck() : base(-1)
+        public NotADeckMemorieDeck() : base(-1, "NotADeck")
         {
             LastModified = DateTime.MinValue;
         }
