@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {createUseStyles} from 'react-jss'
 import { useAppDispatch, useAppSelector } from '../../state-management/hooks';
+import { MemorieCardState } from '../models/memorie-card-state.dto';
 import { flipCard } from '../slices/memorie-card-slice';
 
 const useStyles = createUseStyles({
@@ -25,6 +26,15 @@ const useStyles = createUseStyles({
         '&:hover': {
             boxShadow:  "30px 30px 35px #969696,-30px -30px 35px #ffffff",
         }
+    },    
+    cardRemoved: {
+        width: "100%",
+        height: "100%",
+        position: "relative",
+        display: "flex",
+        justifyContent: 'center',
+        alignContent: 'center',
+        opacity: 0
     },
     cardFace: {
         position: "absolute",
@@ -53,6 +63,7 @@ const MemorieCard = (props: MemorieCardProps) => {
     const dispatch = useAppDispatch();
     const canCardBeFlipped = useAppSelector(state => state.memorieCards.cardsLeftToFlip > 0)
     const roundCount = useAppSelector(state => state.memorieCards.roundCounter)
+    const cardState = useAppSelector(state => state.memorieCards.cardIdsInGame.filter(x => x.id === props.id).at(0));
     const classes = useStyles();
     const handleFlip = ()  => {
         if(canCardBeFlipped === false || flipped) {
@@ -66,6 +77,21 @@ const MemorieCard = (props: MemorieCardProps) => {
     useEffect(() => {
         setFlipped(false);
     },[roundCount]);
+    if(!cardState)
+    {
+        return null;
+    }
+    console.log(cardState);
+    if(cardState.state === MemorieCardState.Removed) {
+        return (
+        <>
+            <div className={classes.scene}>
+                <div onClick={() => handleFlip()} className={classes.cardRemoved} data-testid={`memorie-card-${props.id}`}>
+
+                </div>
+            </div>
+        </>)
+    }
     return (
         <>
             <div className={classes.scene}>

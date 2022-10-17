@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../state-management/hooks';
 import { RootState } from '../../state-management/store';
 import {useMemorieCards  } from '../api/memorie-api';
 import MemorieCard from '../card/memorie-card';
+import { MemorieCardState } from '../models/memorie-card-state.dto';
 import {  MemorieCardModel } from '../models/memorie.dto';
 import { beginGameWithCards, removeIdFromGame, startNextRound } from '../slices/memorie-card-slice';
 
@@ -32,16 +33,18 @@ const MemorieField = (props: MemorieFieldProps) => {
     const classes = useStyles();
     const canCardBeFlipped = useAppSelector(state => state.memorieCards.cardsLeftToFlip > 0)
     const idsInGame = useAppSelector(state => state.memorieCards.cardIdsInGame)
-    const flippedIds = useAppSelector(state => state.memorieCards.flippedCardIds)
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         if(!canCardBeFlipped) {
             setTimeout(() => {
-                if(flippedIds.every(x => x === flippedIds[0])) {
-                    dispatch(removeIdFromGame(flippedIds[0]));
+                const flipIdToCompare = idsInGame.filter(x => x.state === MemorieCardState.InGameFlipped).at(0)?.id;
+                if(flipIdToCompare){
+                    if(idsInGame.filter(x => x.state === MemorieCardState.InGameFlipped).every(x => x.id === flipIdToCompare)) {
+                        dispatch(removeIdFromGame(flipIdToCompare));
+                    }
+                    dispatch(startNextRound());
                 }
-                dispatch(startNextRound());
             }, 1000);
         }
     },[canCardBeFlipped])
@@ -69,7 +72,6 @@ const MemorieField = (props: MemorieFieldProps) => {
         )
     }
     const cardList = douplicatedAndRandomizedCardArray
-        .filter(card => idsInGame.includes(card.identidfier.toString()))
         .map((card, index) => {
             return <MemorieCard key={card.name.toString().concat(card.identidfier.toString()).concat(index.toString())} id={card.identidfier.toString()} text={card.name}></MemorieCard>
         });
