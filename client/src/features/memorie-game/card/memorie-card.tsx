@@ -81,7 +81,6 @@ const MemorieCard = (props: MemorieCardProps) => {
     {
         return null;
     }
-    console.log(cardState);
     if(cardState.state === MemorieCardState.Removed) {
         return (
         <>
